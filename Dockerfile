@@ -34,6 +34,6 @@ RUN useradd -m analyst && \
 USER analyst
 
 # ---------- health ----------
-HEALTHCHECK CMD python -c "import lief, pefile" || exit 1
+HEALTHCHECK CMD python -c "import lief, pefile, r2pipe" || exit 1
 
 CMD ["bash"]
