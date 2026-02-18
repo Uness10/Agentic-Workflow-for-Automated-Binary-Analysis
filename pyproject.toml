@@ -11,6 +11,8 @@ dependencies = [
   "pyelftools",
   "lief",
   "r2pipe",
+  "google-generativeai",
+  "python-dotenv",
 ]
 
 [project.optional-dependencies]

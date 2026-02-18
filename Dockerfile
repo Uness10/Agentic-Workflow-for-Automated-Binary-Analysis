@@ -10,10 +10,10 @@ RUN apt-get update && apt-get install -y \
     binutils \
     && rm -rf /var/lib/apt/lists/*
 
-# ---------- radare2 ----------
-RUN git clone --depth 1 https://github.com/radareorg/radare2.git /opt/radare2 && \
-    /opt/radare2/sys/install.sh && \
-    rm -rf /opt/radare2
+# ---------- radare2 (avoid snapd in containers) ----------
+# Install radare2 from the distro package instead of using snapd,
+# because snapd requires systemd/socket activation not available in containers.
+
 
 # ---------- python deps ----------
 WORKDIR /app
@@ -25,8 +25,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # ---------- app ----------
 COPY . /app
 
-# ---------- permissions ----------
-RUN chmod +x /app/start.sh
+
 
 # ---------- non-root ----------
 RUN useradd -m analyst && \
