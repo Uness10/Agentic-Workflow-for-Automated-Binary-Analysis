@@ -25,7 +25,13 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # ---------- app ----------
 COPY . /app
 
-
+# ---------- compile test samples ----------
+RUN if [ -f /app/samples/fake_malware.c ]; then \
+        gcc -o /app/samples/fake_malware /app/samples/fake_malware.c -no-pie; \
+    fi
+RUN if [ -f /app/test.c ]; then \
+        gcc -o /app/samples/test /app/test.c -no-pie; \
+    fi
 
 # ---------- non-root ----------
 RUN useradd -m analyst && \

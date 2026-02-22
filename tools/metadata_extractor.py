@@ -45,14 +45,8 @@ EPOCH_UPPER = datetime.datetime(2030, 1, 1)
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
-def extract_metadata(file_path: str) -> dict[str, Any]:
-    """Extract and analyze metadata from a PE or ELF binary.
-
-    Returns structured JSON with file info, section details, import
-    counts, and anomaly flags (e.g. suspicious timestamps, high-entropy
-    sections).
-    """
+def extract_metadata_impl(file_path: str) -> dict[str, Any]:
+    """Extract and analyze metadata from a PE or ELF binary (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="metadata-extractor")
 
@@ -77,6 +71,17 @@ def extract_metadata(file_path: str) -> dict[str, Any]:
     ))
 
     return result.to_dict()
+
+
+@mcp.tool()
+def extract_metadata(file_path: str) -> dict[str, Any]:
+    """Extract and analyze metadata from a PE or ELF binary.
+
+    Returns structured JSON with file info, section details, import
+    counts, and anomaly flags (e.g. suspicious timestamps, high-entropy
+    sections).
+    """
+    return extract_metadata_impl(file_path)
 
 
 # ---------------------------------------------------------------------------

@@ -70,13 +70,8 @@ _OVERLAY_INDICATORS = {".rsrc", ".reloc"}
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
-def detect_obfuscation(file_path: str) -> dict[str, Any]:
-    """Detect packing, obfuscation, and evasion techniques in a binary.
-
-    Returns identified packers, entropy analysis, anti-debug indicators,
-    and an overall evasion confidence score.
-    """
+def detect_obfuscation_impl(file_path: str) -> dict[str, Any]:
+    """Detect packing, obfuscation, and evasion techniques (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="obfuscation-detector")
     raw = open(file_path, "rb").read()
@@ -106,6 +101,16 @@ def detect_obfuscation(file_path: str) -> dict[str, Any]:
     ))
 
     return result.to_dict()
+
+
+@mcp.tool()
+def detect_obfuscation(file_path: str) -> dict[str, Any]:
+    """Detect packing, obfuscation, and evasion techniques in a binary.
+
+    Returns identified packers, entropy analysis, anti-debug indicators,
+    and an overall evasion confidence score.
+    """
+    return detect_obfuscation_impl(file_path)
 
 
 # ---------------------------------------------------------------------------

@@ -11,7 +11,9 @@ Each string is tagged with a category and a risk flag.
 from __future__ import annotations
 
 import re
-from typing import Any
+import shutil
+import subprocess
+from typing import Any, Optional
 
 from fastmcp import FastMCP
 
@@ -77,20 +79,20 @@ MIN_STRING_LEN = 6
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
-def analyze_strings(file_path: str) -> dict[str, Any]:
-    """Extract and categorise human-readable strings from a binary.
-
-    Returns categorised strings grouped by type (URL, IP, command, etc.)
-    along with risk flags and MITRE ATT&CK technique IDs.
-    """
+def analyze_strings_impl(file_path: str) -> dict[str, Any]:
+    """Extract and categorise strings from a binary (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="string-analyzer")
 
     raw = open(file_path, "rb").read()
 
-    # Extract printable ASCII strings
-    ascii_strings = _extract_ascii(raw)
+    # Prefer system `strings` utility if available (faster / may find more)
+    strings_bin = shutil.which("strings") or shutil.which("strings.exe")
+    if strings_bin:
+        ascii_strings = _extract_with_strings(file_path, strings_bin)
+    else:
+        # Extract printable ASCII strings from raw bytes
+        ascii_strings = _extract_ascii(raw)
     # Also try UTF-16-LE (common in PE)
     utf16_strings = _extract_utf16(raw)
     all_strings = list(set(ascii_strings + utf16_strings))
@@ -137,6 +139,16 @@ def analyze_strings(file_path: str) -> dict[str, Any]:
     return result.to_dict()
 
 
+@mcp.tool()
+def analyze_strings(file_path: str) -> dict[str, Any]:
+    """Extract and categorise human-readable strings from a binary.
+
+    Returns categorised strings grouped by type (URL, IP, command, etc.)
+    along with risk flags and MITRE ATT&CK technique IDs.
+    """
+    return analyze_strings_impl(file_path)
+
+
 # ---------------------------------------------------------------------------
 # String extraction helpers
 # ---------------------------------------------------------------------------
@@ -163,6 +175,25 @@ def _extract_utf16(data: bytes) -> list[str]:
         except UnicodeDecodeError:
             continue
     return results
+
+
+def _extract_with_strings(file_path: str, strings_bin: Optional[str] = None) -> list[str]:
+    """Call external `strings` binary (if available) and return extracted lines.
+
+    This prefers the system-provided `strings` which can be faster and more
+    feature-complete. We still filter by `MIN_STRING_LEN` to match behavior.
+    """
+    if strings_bin is None:
+        strings_bin = shutil.which("strings") or shutil.which("strings.exe")
+    if not strings_bin:
+        return []
+
+    try:
+        proc = subprocess.run([strings_bin, file_path], capture_output=True, text=True, check=True)
+        lines = proc.stdout.splitlines()
+        return [l for l in lines if len(l) >= MIN_STRING_LEN]
+    except Exception:
+        return []
 
 
 # ---------------------------------------------------------------------------

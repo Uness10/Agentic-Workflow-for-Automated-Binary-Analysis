@@ -1,0 +1,1 @@
+analyst@86ae51db7aa9:/app$ pip install agno[google] && export GOOGLE_API_KEY=

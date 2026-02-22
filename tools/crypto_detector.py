@@ -73,14 +73,8 @@ _CRYPTO_APIS: set[str] = {
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
-def detect_crypto(file_path: str) -> dict[str, Any]:
-    """Scan a binary for cryptographic constants, high-entropy blobs,
-    and crypto-related API imports.
-
-    Returns a structured JSON report with algorithm identifications,
-    confidence scores, and MITRE ATT&CK references.
-    """
+def detect_crypto_impl(file_path: str) -> dict[str, Any]:
+    """Scan a binary for cryptographic material (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="crypto-detector")
     raw = open(file_path, "rb").read()
@@ -99,6 +93,17 @@ def detect_crypto(file_path: str) -> dict[str, Any]:
     ))
 
     return result.to_dict()
+
+
+@mcp.tool()
+def detect_crypto(file_path: str) -> dict[str, Any]:
+    """Scan a binary for cryptographic constants, high-entropy blobs,
+    and crypto-related API imports.
+
+    Returns a structured JSON report with algorithm identifications,
+    confidence scores, and MITRE ATT&CK references.
+    """
+    return detect_crypto_impl(file_path)
 
 
 # ---------------------------------------------------------------------------

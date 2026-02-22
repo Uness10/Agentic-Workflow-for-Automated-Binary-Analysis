@@ -130,13 +130,8 @@ _SUSPICIOUS_COMBOS: list[tuple[set[str], str, str, Severity]] = [
 # ---------------------------------------------------------------------------
 
 
-@mcp.tool()
-def analyze_syscalls(file_path: str) -> dict[str, Any]:
-    """Analyse imported APIs / syscalls of a PE or ELF binary.
-
-    Maps each import to MITRE ATT&CK techniques, detects suspicious
-    API combinations, and returns a behavioural risk score.
-    """
+def analyze_syscalls_impl(file_path: str) -> dict[str, Any]:
+    """Analyse imported APIs / syscalls (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="syscall-analyzer")
 
@@ -182,6 +177,16 @@ def analyze_syscalls(file_path: str) -> dict[str, Any]:
     ))
 
     return result.to_dict()
+
+
+@mcp.tool()
+def analyze_syscalls(file_path: str) -> dict[str, Any]:
+    """Analyse imported APIs / syscalls of a PE or ELF binary.
+
+    Maps each import to MITRE ATT&CK techniques, detects suspicious
+    API combinations, and returns a behavioural risk score.
+    """
+    return analyze_syscalls_impl(file_path)
 
 
 # ---------------------------------------------------------------------------
