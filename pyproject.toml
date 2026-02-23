@@ -5,7 +5,7 @@ description = "Agentic workflow for automated PE/ELF binary analysis"
 requires-python = ">=3.11"
 
 dependencies = [
-  "agno",
+  "agno[google]",
   "fastmcp",
   "pefile",
   "pyelftools",

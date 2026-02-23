@@ -147,7 +147,7 @@ def _scan_high_entropy_blobs(
     raw: bytes,
     window: int = 256,
     stride: int = 256,
-    threshold: float = 7.5,
+    threshold: float = 7.0,
 ) -> None:
     """Slide a window across the binary looking for unusually high entropy
     regions that may be embedded keys or ciphertext."""

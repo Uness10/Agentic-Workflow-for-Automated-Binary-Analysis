@@ -1,1 +1,62 @@
 .env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# Byte-compiled / optimized / DLL files
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Pytest
+.pytest_cache/
+
+# Mypy / ruff cache
+.mypy_cache/
+.ruff_cache/
+
+# Coverage
+.coverage
+coverage.xml
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker
+*.local
+
+# Compiled sample binaries (do not commit build artifacts)
+/samples/fake_malware
+/samples/test
+/samples/*.exe
+/samples/*.o
+
+# Secrets and keys
+*.pem
+*.key
+secrets.yml
+
+# Optional: lockfiles
+poetry.lock
