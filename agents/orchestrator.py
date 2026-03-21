@@ -142,7 +142,7 @@ def create_orchestrator() -> Agent:
         raise RuntimeError("GOOGLE_API_KEY environment variable not set.")
 
     model = GeminiChat(
-        id="gemini-2.5-flash",
+        id="gemini-2.5-flash-lite",
         api_key=google_key,
     )
 
