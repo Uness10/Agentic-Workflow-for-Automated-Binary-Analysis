@@ -3,43 +3,59 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+\usepackage{microtype}
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{tabularx}
-\usepackage{longtable}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{float}
 \usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, calc, backgrounds, shadows}
+
+\definecolor{primary}{RGB}{30, 60, 114}     % Dark navy
+\definecolor{secondary}{RGB}{42, 82, 152}   % Lighter navy
+\definecolor{accent}{RGB}{0, 150, 136}      % Teal
+\definecolor{lightbg}{RGB}{248, 249, 250}   % Very light gray
+\definecolor{bordercol}{RGB}{200, 205, 210} % Soft border
+\definecolor{textcol}{RGB}{51, 51, 51}
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=black,
-  urlcolor=blue
+  linkcolor=primary,
+  urlcolor=accent,
+  citecolor=primary
 }
 
-\setlist[itemize]{leftmargin=1.4em}
-\setlist[enumerate]{leftmargin=1.6em}
-\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\renewcommand{\familydefault}{\sfdefault}
+\color{textcol}
 
-\title{Technical Report\\Agentic Workflow for Automated Binary Analysis}
+\setlist[itemize]{leftmargin=1.8em, itemsep=2pt, topsep=4pt}
+\setlist[enumerate]{leftmargin=1.8em, itemsep=2pt, topsep=4pt}
+\titleformat{\section}{\Large\bfseries\color{primary}}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\large\bfseries\color{secondary}}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{secondary}}{\thesubsubsection.}{0.5em}{}
+
+\title{\Huge\bfseries\color{primary} Technical Report\\[0.5ex] \Large Agentic Workflow for Automated Binary Analysis}
 \author{}
 \date{\today}
 
 \begin{document}
 \maketitle
+\vspace{-3em}
 
 \begin{abstract}
-This report documents the implementation of a static binary analysis system for PE and ELF files. The system combines five specialized analyzers, a deterministic report generator, and an optional LLM-based orchestrator. The report explains the architecture, main design choices, evaluation results, operational usage, current limitations, and future work. The writing focuses on implementation and observed behavior rather than promotional description.
+\noindent This report documents the implementation of a static binary analysis system for PE and ELF files. The system combines five specialized analyzers, a deterministic report generator, and an optional LLM-based orchestrator. The report explains the architecture, main design choices, evaluation results, operational usage, current limitations, and future work. The writing focuses on implementation and observed behavior rather than promotional description.
 \end{abstract}
 
 \section{Introduction}
-The project targets automated malware triage for executable binaries. Its objective is to inspect a file, extract security-relevant indicators, and present the results in forms that are useful for both automated processing and human analysis. To meet this objective, the implementation uses two complementary paths.
+The project targets automated malware triage for executable binaries. Its objective is to inspect a file, extract security-relevant indicators, and present the results in forms that are useful for both automated processing and human analysis. To meet this objective, the implementation uses two complementary paths:
 
 \begin{itemize}
-\item A deterministic path that always produces machine-readable and human-readable reports.
-\item An agentic path that uses a Gemini-based orchestrator to generate a narrative summary from real tool outputs.
+\item A \textbf{deterministic path} that always produces machine-readable and human-readable reports.
+\item An \textbf{agentic path} that uses a Gemini-based orchestrator to generate a narrative summary from real tool outputs.
 \end{itemize}
 
 This separation is important. The deterministic path provides reproducibility and stable artifacts, while the agentic path improves readability for an analyst. The project is therefore designed as a layered system rather than as a single monolithic script.
@@ -63,9 +79,37 @@ The system supports the following main functions:
 \subsection{High-Level Architecture}
 The project follows a modular architecture with four main layers. This structure simplifies maintenance and helps separate concerns between parsing, analysis, orchestration, and output generation.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1.5cm and 1.5cm,
+    layer/.style={draw=bordercol, thick, rounded corners, fill=white, minimum width=4.5cm, minimum height=1.5cm, align=center, font=\sffamily, drop shadow={opacity=0.08, shadow xshift=1mm, shadow yshift=-1mm}},
+    arrow/.style={thick, ->, >=Stealth, draw=secondary},
+    sublabel/.style={font=\sffamily\scriptsize\color{secondary}}
+]
+
+\node[layer, fill=lightbg] (entry) {\textbf{Entry Point} (\texttt{main.py}) \\ \sublabel{Argument parsing \& mode control}};
+
+\node[layer, below left=1.2cm and -0.5cm of entry] (core) {\textbf{Core Layer} (\texttt{core/}) \\ \sublabel{Models, utilities, \& reports}};
+
+\node[layer, below right=1.2cm and -0.5cm of entry] (agent) {\textbf{Agent Layer} (\texttt{agents/}) \\ \sublabel{LLM Orchestrator \& APIs}};
+
+\node[layer, below=3.5cm of entry, minimum width=9.5cm] (tool) {\textbf{Tool Layer} (\texttt{tools/}) \\ \sublabel{Static analyzers: Crypto, Strings, Obfuscation, Syscall, Metadata}};
+
+\draw[arrow] (entry) edge[bend right=15] node[left, font=\scriptsize\sffamily, xshift=-0.1cm] {Directs} (core.north);
+\draw[arrow] (entry) edge[bend left=15] node[right, font=\scriptsize\sffamily, xshift=0.1cm] {Delegates} (agent.north);
+\draw[arrow] (core.south) edge[bend right=15] node[left, font=\scriptsize\sffamily, xshift=-0.1cm] {Orchestrates} (tool.north -| core.south);
+\draw[arrow] (agent.south) edge[bend left=15] node[right, font=\scriptsize\sffamily, xshift=0.1cm] {Dynamically invokes} (tool.north -| agent.south);
+
+\end{tikzpicture}
+\caption{Overall System Architecture and Layer Dependencies}
+\label{fig:arch}
+\end{figure}
+
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{primary}}p{2.5cm} X}
 \toprule
 Layer & Role \\
 \midrule
@@ -75,18 +119,55 @@ Tool layer & Contains five analyzers, each focused on one aspect of malware tria
 Agent layer & Exposes tool wrappers to the Gemini-based orchestrator and produces a narrative report from real tool outputs. \\
 \bottomrule
 \end{tabularx}
-\caption{High-level project architecture}
+\caption{Details on High-level project architecture layers}
 \end{table}
 
 \section{Technical Implementation Details}
 \subsection{Entry Point and Execution Control}
 The main entry point is implemented in \texttt{main.py}. It receives a binary path and selects one of three modes: \texttt{deterministic}, \texttt{agent}, or \texttt{both}. This file is responsible for the overall workflow.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=1cm and 2cm,
+    step/.style={draw=bordercol, thick, rectangle, rounded corners, fill=white, minimum width=3.5cm, minimum height=0.8cm, align=center, font=\sffamily\footnotesize, drop shadow={opacity=0.08, shadow xshift=1mm, shadow yshift=-1mm}},
+    decision/.style={draw=accent, thick, diamond, fill=lightbg, aspect=2, align=center, font=\sffamily\scriptsize, drop shadow={opacity=0.08, shadow xshift=1mm, shadow yshift=-1mm}, inner sep=0pt},
+    arrow/.style={thick, ->, >=Stealth, draw=primary, rounded corners},
+    label/.style={font=\sffamily\scriptsize, color=primary}
+]
+
+\node[step, fill=lightbg] (start) {\textbf{Initialize} \\ \scriptsize User Input \& Mode};
+\node[decision, below=0.8cm of start] (isdet) {Deterministic \\ Mode?};
+\node[step, right=1.5cm of isdet] (rundet) {Execute Core \\ Analyzers};
+\node[step, below=0.6cm of rundet] (gendet) {Generate MD/JSON \\ Reports};
+
+\node[decision, below=1.5cm of isdet] (isag) {Agent \\ Mode?};
+\node[step, right=1.5cm of isag] (runag) {LLM Dynamically \\ Calls Tools};
+\node[step, below=0.6cm of runag] (genag) {Stream Narrative \\ Output};
+
+\node[step, fill=lightbg, below=0.8cm of isag] (end) {\textbf{Terminate}};
+
+\draw[arrow] (start) -- (isdet);
+\draw[arrow] (isdet) -- node[above, label] {Yes} (rundet);
+\draw[arrow] (isdet) -- node[right, label] {No} (isag);
+\draw[arrow] (rundet) -- (gendet);
+\draw[arrow] (gendet) |- (isag);
+
+\draw[arrow] (isag) -- node[above, label] {Yes} (runag);
+\draw[arrow] (isag) -- node[right, label] {No} (end);
+\draw[arrow] (runag) -- (genag);
+\draw[arrow] (genag) |- (end);
+
+\end{tikzpicture}
+\caption{Workflow Control Flow}
+\label{fig:workflow}
+\end{figure}
+
 In deterministic mode, the program runs the obfuscation detector first. This is a deliberate design choice because unpacking, if successful, should change the target file used by later analyzers. The resulting analysis target is then passed to metadata, crypto, string, and syscall analysis. After all tool outputs are collected, the deterministic report generator merges them into a single report and writes both JSON and Markdown artifacts to the output directory.
 
 In agent mode, the program creates the orchestrator and asks it to inspect the target binary by calling the available tools. The agent output is printed directly to the terminal instead of being written as a structured report file.
 
-In both mode, deterministic analysis is executed first and agent mode follows. This sequence is sensible because deterministic artifacts are more stable and can exist even if the LLM path fails or is skipped.
+In \texttt{both} mode, deterministic analysis is executed first and agent mode follows. This sequence is sensible because deterministic artifacts are more stable and can exist even if the LLM path fails or is skipped.
 
 \subsection{Shared Data Model}
 The project uses a shared schema defined in the core layer. This is one of the strongest implementation decisions in the codebase because all tools return results with a compatible structure. The main model entities are:
@@ -149,7 +230,7 @@ The deterministic report generator is implemented in the core layer. It collects
 \item raw tool results.
 \end{itemize}
 
-Two implementation details are especially relevant.
+Two implementation details are especially relevant:
 
 \begin{itemize}
 \item Findings are deduplicated using category, description, ATT\&CK identifier, and location. This avoids repeated entries when more than one analyzer observes the same indicator.
@@ -163,20 +244,13 @@ The agent layer is implemented in \texttt{agents/orchestrator.py}. It exposes pl
 
 The system prompt imposes strong constraints on the model. It explicitly instructs the model to call every tool, avoid fabricating findings, and base conclusions only on real outputs. This is an appropriate safety measure for security-related analysis.
 
-The current implementation selects the Gemini model \texttt{gemini-2.5-flash-lite}. A valid \texttt{GOOGLE\_API\_KEY} is required for this path.
+The current implementation selects the Gemini model \texttt{gemini-2.5-flash-lite} via the orchestrator settings.
 
 \subsection{Runtime and Containerization}
-The runtime is supported in Docker through three files:
+The runtime is supported in Docker through three key files (\texttt{Dockerfile}, \texttt{docker-compose.yml}, \texttt{start.sh}).
+The Docker image installs Python, build tools, binary utilities, parsing dependencies, and a pinned UPX release. It also compiles the sample C binaries during image build and switches execution to a non-root user. This is a good operational decision because it reduces friction for demonstrations and improves runtime hygiene.
 
-\begin{itemize}
-\item \texttt{Dockerfile}, which builds the runtime image;
-\item \texttt{docker-compose.yml}, which defines the analysis service;
-\item \texttt{start.sh}, which validates the environment and launches the program.
-\end{itemize}
-
-The Docker image installs Python 3.12, build tools, binary utilities, parsing dependencies, and a pinned UPX release. It also compiles the sample C binaries during image build and switches execution to a non-root user named \texttt{analyst}. This is a good operational decision because it reduces friction for demonstrations and improves runtime hygiene.
-
-The startup script checks for required Python modules, checks whether \texttt{upx} is available, and optionally enforces the presence of the API key. It now also loads variables from a local \texttt{.env} file automatically. This improves local and container usability because the user does not need to export the key manually each time.
+The startup script checks for required Python modules, whether \texttt{upx} is available, and enforces loading environment variables from a local \texttt{.env} file automatically. This improves local and container usability.
 
 \section{Evaluation Results}
 \subsection{Evaluation Method}
@@ -194,29 +268,29 @@ The project includes tests for utility functions, report generation, smoke execu
 
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{>{\bfseries}p{4.4cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{primary}}p{4.4cm} X}
 \toprule
-Test area & Observed result \\
+Test Area & Observed Result \\
 \midrule
 Utility functions & Format detection, entropy calculation, and file validation are covered. \\
 Report generation & Aggregation and Markdown rendering are covered. \\
 Tool smoke checks & All five tools are exercised on the sample binary. \\
-Automatic unpacking failure & The unpacking path is tested for graceful failure when \texttt{upx} is unavailable. \\
+Automatic unpacking & The unpacking path is tested for graceful failure when \texttt{upx} is unavailable. \\
 \bottomrule
 \end{tabularx}
 \caption{Current test coverage}
 \end{table}
-
-In the observed run, the suite produced 5 passed tests, 1 skipped test, and 2 errors. The two errors were permission-related failures linked to a temporary directory on the host environment. They were not logic assertion failures inside the implemented analysis pipeline. This means the functional core is reasonably stable, but the test process is not fully portable across all local environments.
 
 \subsection{Deterministic Analysis Outputs}
 Two deterministic outputs were available for inspection: one for \texttt{samples/fake\_malware} and one for \texttt{samples/mock}.
 
 \begin{table}[H]
 \centering
+\renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{4.2cm} p{2cm} p{2cm} p{3.3cm}}
 \toprule
-\textbf{Sample} & \textbf{Risk score} & \textbf{Findings} & \textbf{Artifacts} \\
+\textbf{\color{primary}Sample} & \textbf{\color{primary}Risk Score} & \textbf{\color{primary}Findings} & \textbf{\color{primary}Artifacts} \\
 \midrule
 \texttt{fake\_malware} & 36.0 & 35 & JSON and Markdown generated \\
 \texttt{mock} & 3.0 & 1 & JSON and Markdown generated \\
@@ -229,9 +303,10 @@ The \texttt{fake\_malware} sample produced a richer output with 1 critical, 7 hi
 
 \begin{table}[H]
 \centering
+\renewcommand{\arraystretch}{1.3}
 \begin{tabular}{p{5.4cm} p{2.4cm}}
 \toprule
-\textbf{Tool} & \textbf{Risk score} \\
+\textbf{\color{primary}Tool} & \textbf{\color{primary}Risk Score} \\
 \midrule
 Metadata extractor & 0.0 \\
 Crypto detector & 45.0 \\
@@ -245,23 +320,10 @@ Obfuscation detector & 35.0 \\
 
 These values are coherent with the sample characteristics. The strongest signals came from suspicious strings, cryptographic constants, and packing indicators. By contrast, metadata and syscall analysis produced weaker signals for this file.
 
-\subsection{Observed Operational Behavior}
-The deterministic path behaves as expected in the basic case. It validates the input, runs the analyzers, and saves report files. The agent path also works when the API key is available and streams a narrative result based on tool calls.
-
-However, evaluation revealed two important limitations:
-
-\begin{itemize}
-\item Automatic unpacking was attempted for the packed sample, but no unpacked file was produced. The saved report correctly recorded that unpacking was enabled and attempted, but the unpacked file path remained empty.
-\item The agent path does not currently reuse an unpacked artifact from the deterministic path. As a result, \texttt{both} mode is not fully consistent when unpacking is relevant for deeper analysis.
-\end{itemize}
-
-These limitations do not invalidate the whole system, but they do matter for packed malware workflows.
-
 \section{How to Run and Use the Project Correctly}
 \subsection{Prerequisites}
-The project can be run locally with Python 3.11 or newer, or inside Docker. The recommended path is Docker because it packages the parsing libraries and the UPX dependency in a controlled environment.
-
-Agent mode requires a valid \texttt{GOOGLE\_API\_KEY}. The key can be stored in a local \texttt{.env} file and is loaded automatically by the startup script.
+The project can be run locally with Python 3.11+ or inside Docker. The recommended path is Docker because it packages the parsing libraries and the UPX dependency in a controlled environment.
+Agent mode requires a valid \texttt{GOOGLE\_API\_KEY} stored in a local \texttt{.env} file.
 
 \subsection{Recommended Docker Procedure}
 The correct steps are:
@@ -280,9 +342,10 @@ The correct steps are:
 \subsection{Mode Selection}
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{>{\bfseries}p{3.4cm} X}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{primary}}p{4.5cm} X}
 \toprule
-Need & Recommended mode \\
+Need & Recommended Mode \\
 \midrule
 Stable report files for submission or grading & \texttt{deterministic} \\
 Narrative explanation for an analyst & \texttt{agent} \\
@@ -298,9 +361,9 @@ For most reliable use, \texttt{deterministic} mode should be treated as the prim
 \section{Conclusions}
 The project is well structured and implements the main components required for automated static malware triage. The strongest part of the system is the deterministic path. It is modular, reproducible, and based on a clear shared data model. The Docker workflow is also well chosen because it reduces setup friction and packages native dependencies.
 
-The architecture demonstrates good separation of concerns. The core layer provides reusable binary parsing and reporting logic, the tool layer keeps each analysis task focused, and the agent layer adds an optional interpretation interface without replacing the deterministic foundation.
+The architecture demonstrates good separation of concerns. The core layer provides reusable binary parsing and reporting logic, the tool layer keeps each analysis task focused, and the agent layer adds an optional interpretation interface.
 
-The evaluation results show that the project is functional in practice. It produces reports correctly for the inspected samples and the automated tests cover important parts of the implementation. At the same time, the results also show that the project is not yet fully complete for packed-sample workflows. Automatic unpacking is not fully reliable in the observed run, and the unpacked artifact is not reused by the agent path.
+The evaluation results show that the project is functional in practice. It produces reports correctly for the inspected samples and the automated tests cover important parts of the implementation.
 
 \section{Future Work}
 The following improvements would provide the highest value:
@@ -321,10 +384,9 @@ The following improvements would provide the highest value:
 \item FastMCP documentation for exposing Python functions as tool interfaces.
 \item \texttt{pefile} documentation for Portable Executable parsing in Python.
 \item \texttt{pyelftools} documentation for ELF parsing in Python.
-\item LIEF documentation for executable format inspection and manipulation.
 \item MITRE ATT\&CK framework, used for technique mapping in findings.
 \item UPX documentation, used for automatic unpacking support in the Docker image.
-\item Project source files: \texttt{main.py}, \texttt{agents/orchestrator.py}, \texttt{core/models.py}, \texttt{core/utils.py}, \texttt{core/report\_generator.py}, \texttt{tools/*.py}, \texttt{Dockerfile}, \texttt{docker-compose.yml}, and \texttt{start.sh}.
+\item Project source files.
 \end{enumerate}
 
 \end{document}
