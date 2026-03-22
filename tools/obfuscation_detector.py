@@ -12,9 +12,25 @@ Detects obfuscation, packing, and evasion techniques in PE / ELF binaries:
 from __future__ import annotations
 
 import re
+import shutil
+import subprocess
+from pathlib import Path
 from typing import Any
 
-from fastmcp import FastMCP
+try:
+    from fastmcp import FastMCP
+except Exception:
+    class FastMCP:  # type: ignore[override]
+        def __init__(self, name: str):
+            self.name = name
+
+        def tool(self):
+            def _decorator(func):
+                return func
+            return _decorator
+
+        def run(self) -> None:
+            raise RuntimeError("fastmcp is required to run MCP server mode")
 
 from core.models import (
     AnalysisResult,
@@ -70,7 +86,11 @@ _OVERLAY_INDICATORS = {".rsrc", ".reloc"}
 # ---------------------------------------------------------------------------
 
 
-def detect_obfuscation_impl(file_path: str) -> dict[str, Any]:
+def detect_obfuscation_impl(
+    file_path: str,
+    auto_unpack: bool = False,
+    unpack_dir: str | None = None,
+) -> dict[str, Any]:
     """Detect packing, obfuscation, and evasion techniques (plain callable)."""
     info = load_binary(file_path)
     result = AnalysisResult(binary=info, tool_name="obfuscation-detector")
@@ -91,6 +111,34 @@ def detect_obfuscation_impl(file_path: str) -> dict[str, Any]:
         for f in result.findings
         if f.details.get("packer")
     }
+
+    unpack_attempted = False
+    unpacked_file_path = ""
+    if auto_unpack and packers:
+        unpack_attempted = True
+        unpacked_file_path = _attempt_unpack(file_path, packers, unpack_dir)
+        if unpacked_file_path:
+            result.add(Finding(
+                category=FindingCategory.OBFUSCATION,
+                description=(
+                    f"Packed binary unpacked successfully to '{unpacked_file_path}'. "
+                    "Subsequent analyzers should use the unpacked artifact."
+                ),
+                severity=Severity.INFO,
+                confidence=0.95,
+                details={"unpacked_file_path": unpacked_file_path},
+            ))
+        else:
+            result.add(Finding(
+                category=FindingCategory.OBFUSCATION,
+                description=(
+                    "Packing detected but automatic unpacking did not succeed. "
+                    "Ensure UPX is installed for UPX-packed binaries."
+                ),
+                severity=Severity.LOW,
+                confidence=0.8,
+            ))
+
     result.summary = (
         f"Obfuscation scan complete. {n} indicator(s) found."
         + (f" Packer(s) identified: {', '.join(packers)}." if packers else "")
@@ -100,7 +148,10 @@ def detect_obfuscation_impl(file_path: str) -> dict[str, Any]:
         .get(f.severity.value, 0) for f in result.findings
     ))
 
-    return result.to_dict()
+    payload = result.to_dict()
+    payload["unpack_attempted"] = unpack_attempted
+    payload["unpacked_file_path"] = unpacked_file_path
+    return payload
 
 
 @mcp.tool()
@@ -208,9 +259,9 @@ def _detect_overlay(result: AnalysisResult, raw: bytes) -> None:
         return
     last = max(
         result.binary.sections,
-        key=lambda s: s.virtual_address + s.raw_size,
+        key=lambda s: s.raw_offset + s.raw_size,
     )
-    expected_end = last.virtual_address + last.raw_size
+    expected_end = last.raw_offset + last.raw_size
     actual = len(raw)
     overlay_size = actual - expected_end
     if overlay_size > 4096:
@@ -247,6 +298,38 @@ def _check_pe_anti_debug(result: AnalysisResult) -> None:
             mitre_id="T1622",
             details={"apis": found},
         ))
+
+
+def _attempt_unpack(file_path: str, packers: set[str], unpack_dir: str | None) -> str:
+    """Try to unpack known packers. Currently supports UPX."""
+    if "UPX" not in packers:
+        return ""
+
+    upx_bin = shutil.which("upx") or shutil.which("upx.exe")
+    if not upx_bin:
+        return ""
+
+    src = Path(file_path)
+    out_root = Path(unpack_dir) if unpack_dir else src.parent
+    out_root.mkdir(parents=True, exist_ok=True)
+    unpacked_path = out_root / f"{src.stem}.unpacked{src.suffix}"
+
+    # Work on a copy so the original sample remains untouched.
+    shutil.copy2(src, unpacked_path)
+
+    proc = subprocess.run(
+        [upx_bin, "-d", str(unpacked_path)],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode != 0:
+        try:
+            unpacked_path.unlink(missing_ok=True)
+        except Exception:
+            pass
+        return ""
+
+    return str(unpacked_path)
 
 
 # ---------------------------------------------------------------------------

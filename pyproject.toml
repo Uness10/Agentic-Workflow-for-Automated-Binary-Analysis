@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "agentic-binary-analysis"
 version = "0.1.0"
@@ -10,7 +14,6 @@ dependencies = [
   "pefile",
   "pyelftools",
   "lief",
-  "r2pipe",
   "google-generativeai",
   "python-dotenv",
 ]
@@ -22,6 +25,12 @@ dev = [
   "ruff",
 ]
 
+[project.scripts]
+binary-analysis = "main:main"
+
+[tool.setuptools]
+packages = ["agents", "core", "tools"]
+py-modules = ["main", "list_gemini_models"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]

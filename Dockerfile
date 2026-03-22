@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.12-slim-bookworm
 
 # ---------- system deps ----------
 RUN apt-get update && apt-get install -y \
@@ -8,29 +8,44 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     file \
     binutils \
+    xz-utils \
     && rm -rf /var/lib/apt/lists/*
 
-# ---------- radare2 (avoid snapd in containers) ----------
-# Install radare2 from the distro package instead of using snapd,
-# because snapd requires systemd/socket activation not available in containers.
+# ---------- upx ----------
+# Debian bookworm repositories may not provide an `upx` package, so install
+# a pinned upstream release binary.
+ARG UPX_VERSION=4.2.4
+RUN set -eux; \
+    arch="$(dpkg --print-architecture)"; \
+    case "$arch" in \
+      amd64) upx_arch="amd64" ;; \
+      arm64) upx_arch="arm64" ;; \
+      *) echo "Unsupported architecture for UPX: $arch"; exit 1 ;; \
+    esac; \
+    curl -fsSL -o /tmp/upx.tar.xz "https://github.com/upx/upx/releases/download/v${UPX_VERSION}/upx-${UPX_VERSION}-${upx_arch}_linux.tar.xz"; \
+    tar -xJf /tmp/upx.tar.xz -C /tmp; \
+    install -m 0755 "/tmp/upx-${UPX_VERSION}-${upx_arch}_linux/upx" /usr/local/bin/upx; \
+    rm -rf /tmp/upx.tar.xz "/tmp/upx-${UPX_VERSION}-${upx_arch}_linux"
 
-
-# ---------- python deps ----------
-WORKDIR /app
-COPY pyproject.toml ./
-
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir ".[dev]"
 
 # ---------- app ----------
+WORKDIR /app
 COPY . /app
+RUN chmod +x /app/start.sh
+
+# ---------- python deps ----------
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir ".[dev]"
 
 # ---------- compile test samples ----------
 RUN if [ -f /app/samples/fake_malware.c ]; then \
         gcc -o /app/samples/fake_malware /app/samples/fake_malware.c -no-pie; \
     fi
-RUN if [ -f /app/test.c ]; then \
-        gcc -o /app/samples/test /app/test.c -no-pie; \
+RUN if [ -f /app/samples/test.c ]; then \
+        gcc -o /app/samples/test /app/samples/test.c -no-pie; \
+    fi
+RUN if [ -f /app/samples/mock.c ]; then \
+        gcc -o /app/samples/mock /app/samples/mock.c -no-pie; \
     fi
 
 # ---------- non-root ----------
@@ -39,6 +54,6 @@ RUN useradd -m analyst && \
 USER analyst
 
 # ---------- health ----------
-HEALTHCHECK CMD python -c "import lief, pefile, r2pipe" || exit 1
+HEALTHCHECK CMD python -c "import lief, pefile" || exit 1
 
-CMD ["bash"]
+CMD ["/bin/bash", "./start.sh"]

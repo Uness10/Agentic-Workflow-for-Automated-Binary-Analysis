@@ -12,7 +12,20 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastmcp import FastMCP
+try:
+    from fastmcp import FastMCP
+except Exception:
+    class FastMCP:  # type: ignore[override]
+        def __init__(self, name: str):
+            self.name = name
+
+        def tool(self):
+            def _decorator(func):
+                return func
+            return _decorator
+
+        def run(self) -> None:
+            raise RuntimeError("fastmcp is required to run MCP server mode")
 
 from core.models import (
     AnalysisResult,

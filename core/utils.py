@@ -125,6 +125,7 @@ def _parse_pe(info: BinaryInfo, data: bytes) -> None:
                     virtual_address=sec.VirtualAddress,
                     virtual_size=sec.Misc_VirtualSize,
                     raw_size=sec.SizeOfRawData,
+                    raw_offset=sec.PointerToRawData,
                     entropy=sec.get_entropy(),
                     permissions=_pe_section_perms(sec.Characteristics),
                 )
@@ -166,6 +167,7 @@ def _parse_elf(info: BinaryInfo, data: bytes) -> None:
                     virtual_address=sec["sh_addr"],
                     virtual_size=sec["sh_size"],
                     raw_size=sec["sh_size"],
+                    raw_offset=sec["sh_offset"],
                     entropy=shannon_entropy(raw),
                     permissions=_elf_section_flags(sec["sh_flags"]),
                 )
@@ -209,7 +211,8 @@ def _pe_section_perms(characteristics: int) -> str:
 
 
 def _elf_section_flags(flags: int) -> str:
-    r = "r" if flags & 0x4 else "-"  # SHF_ALLOC (readable via segment)
-    w = "w" if flags & 0x1 else "-"  # SHF_WRITE
-    x = "x" if flags & 0x4 else "-"  # SHF_EXECINSTR approximation
+    # ELF section flags: SHF_WRITE=0x1, SHF_ALLOC=0x2, SHF_EXECINSTR=0x4
+    r = "r" if flags & 0x2 else "-"
+    w = "w" if flags & 0x1 else "-"
+    x = "x" if flags & 0x4 else "-"
     return f"{r}{w}{x}"

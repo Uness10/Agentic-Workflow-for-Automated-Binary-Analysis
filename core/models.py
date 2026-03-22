@@ -47,6 +47,7 @@ class SectionInfo:
     virtual_size: int
     raw_size: int
     entropy: float
+    raw_offset: int = 0
     permissions: str = ""  # e.g. "r-x", "rw-"
 
     def to_dict(self) -> dict[str, Any]:
