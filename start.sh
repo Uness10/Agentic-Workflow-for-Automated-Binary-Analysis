@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [[ -f ".env" ]]; then
+  # Export variables from the local .env file for local and container runs.
+  set -a
+  . ".env"
+  set +a
+fi
+
 echo "[start] Validating runtime dependencies..."
 
 if ! command -v python >/dev/null 2>&1; then

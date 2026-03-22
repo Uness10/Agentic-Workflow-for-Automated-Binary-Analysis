@@ -1,0 +1,2467 @@
+{
+  "generated_at": "2026-03-22T14:06:29.431618+00:00",
+  "input_file": "/app/samples/mock",
+  "binary": {
+    "path": "/app/samples/mock",
+    "format": "ELF",
+    "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+    "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+    "size": 14488,
+    "arch": "EM_X86_64",
+    "bits": 64,
+    "compiler": "",
+    "entry_point": 4768,
+    "sections": [
+      {
+        "name": "",
+        "virtual_address": 0,
+        "virtual_size": 0,
+        "raw_size": 0,
+        "entropy": 0.0,
+        "raw_offset": 0,
+        "permissions": "---"
+      },
+      {
+        "name": ".interp",
+        "virtual_address": 792,
+        "virtual_size": 28,
+        "raw_size": 28,
+        "entropy": 3.9407598325400897,
+        "raw_offset": 792,
+        "permissions": "r--"
+      },
+      {
+        "name": ".note.gnu.property",
+        "virtual_address": 824,
+        "virtual_size": 48,
+        "raw_size": 48,
+        "entropy": 1.9345480540338138,
+        "raw_offset": 824,
+        "permissions": "r--"
+      },
+      {
+        "name": ".note.gnu.build-id",
+        "virtual_address": 872,
+        "virtual_size": 36,
+        "raw_size": 36,
+        "entropy": 4.247167197306934,
+        "raw_offset": 872,
+        "permissions": "r--"
+      },
+      {
+        "name": ".note.ABI-tag",
+        "virtual_address": 908,
+        "virtual_size": 32,
+        "raw_size": 32,
+        "entropy": 1.561278124459133,
+        "raw_offset": 908,
+        "permissions": "r--"
+      },
+      {
+        "name": ".gnu.hash",
+        "virtual_address": 944,
+        "virtual_size": 36,
+        "raw_size": 36,
+        "entropy": 1.7196074272293012,
+        "raw_offset": 944,
+        "permissions": "r--"
+      },
+      {
+        "name": ".dynsym",
+        "virtual_address": 984,
+        "virtual_size": 600,
+        "raw_size": 600,
+        "entropy": 0.6969871079267809,
+        "raw_offset": 984,
+        "permissions": "r--"
+      },
+      {
+        "name": ".dynstr",
+        "virtual_address": 1584,
+        "virtual_size": 281,
+        "raw_size": 281,
+        "entropy": 4.670223282645408,
+        "raw_offset": 1584,
+        "permissions": "r--"
+      },
+      {
+        "name": ".gnu.version",
+        "virtual_address": 1866,
+        "virtual_size": 50,
+        "raw_size": 50,
+        "entropy": 1.6645297862980875,
+        "raw_offset": 1866,
+        "permissions": "r--"
+      },
+      {
+        "name": ".gnu.version_r",
+        "virtual_address": 1920,
+        "virtual_size": 64,
+        "raw_size": 64,
+        "entropy": 2.49395470625279,
+        "raw_offset": 1920,
+        "permissions": "r--"
+      },
+      {
+        "name": ".rela.dyn",
+        "virtual_address": 1984,
+        "virtual_size": 192,
+        "raw_size": 192,
+        "entropy": 1.3930913210260554,
+        "raw_offset": 1984,
+        "permissions": "r--"
+      },
+      {
+        "name": ".rela.plt",
+        "virtual_address": 2176,
+        "virtual_size": 456,
+        "raw_size": 456,
+        "entropy": 1.324788444386374,
+        "raw_offset": 2176,
+        "permissions": "r--"
+      },
+      {
+        "name": ".init",
+        "virtual_address": 4096,
+        "virtual_size": 27,
+        "raw_size": 27,
+        "entropy": 4.23636898364495,
+        "raw_offset": 4096,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".plt",
+        "virtual_address": 4128,
+        "virtual_size": 320,
+        "raw_size": 320,
+        "entropy": 4.004789395721671,
+        "raw_offset": 4128,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".plt.got",
+        "virtual_address": 4448,
+        "virtual_size": 16,
+        "raw_size": 16,
+        "entropy": 3.375,
+        "raw_offset": 4448,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".plt.sec",
+        "virtual_address": 4464,
+        "virtual_size": 304,
+        "raw_size": 304,
+        "entropy": 3.640495469590224,
+        "raw_offset": 4464,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".text",
+        "virtual_address": 4768,
+        "virtual_size": 1288,
+        "raw_size": 1288,
+        "entropy": 5.5594276477024325,
+        "raw_offset": 4768,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".fini",
+        "virtual_address": 6056,
+        "virtual_size": 13,
+        "raw_size": 13,
+        "entropy": 3.238901256602631,
+        "raw_offset": 6056,
+        "permissions": "r-x"
+      },
+      {
+        "name": ".rodata",
+        "virtual_address": 8192,
+        "virtual_size": 157,
+        "raw_size": 157,
+        "entropy": 4.911254984998392,
+        "raw_offset": 8192,
+        "permissions": "r--"
+      },
+      {
+        "name": ".eh_frame_hdr",
+        "virtual_address": 8352,
+        "virtual_size": 116,
+        "raw_size": 116,
+        "entropy": 3.568658579988178,
+        "raw_offset": 8352,
+        "permissions": "r--"
+      },
+      {
+        "name": ".eh_frame",
+        "virtual_address": 8472,
+        "virtual_size": 428,
+        "raw_size": 428,
+        "entropy": 4.060049523734597,
+        "raw_offset": 8472,
+        "permissions": "r--"
+      },
+      {
+        "name": ".init_array",
+        "virtual_address": 15656,
+        "virtual_size": 8,
+        "raw_size": 8,
+        "entropy": 1.061278124459133,
+        "raw_offset": 11560,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".fini_array",
+        "virtual_address": 15664,
+        "virtual_size": 8,
+        "raw_size": 8,
+        "entropy": 1.061278124459133,
+        "raw_offset": 11568,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".dynamic",
+        "virtual_address": 15672,
+        "virtual_size": 496,
+        "raw_size": 496,
+        "entropy": 1.4658343282045923,
+        "raw_offset": 11576,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".got",
+        "virtual_address": 16168,
+        "virtual_size": 216,
+        "raw_size": 216,
+        "entropy": 1.2892443249513206,
+        "raw_offset": 12072,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".xdata",
+        "virtual_address": 16384,
+        "virtual_size": 31,
+        "raw_size": 31,
+        "entropy": 2.8634626357696686,
+        "raw_offset": 12288,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".bss",
+        "virtual_address": 16415,
+        "virtual_size": 1,
+        "raw_size": 1,
+        "entropy": -0.0,
+        "raw_offset": 12319,
+        "permissions": "rw-"
+      },
+      {
+        "name": ".comment",
+        "virtual_address": 0,
+        "virtual_size": 45,
+        "raw_size": 45,
+        "entropy": 3.9441033076242404,
+        "raw_offset": 12319,
+        "permissions": "---"
+      },
+      {
+        "name": ".shstrtab",
+        "virtual_address": 0,
+        "virtual_size": 267,
+        "raw_size": 267,
+        "entropy": 4.287138661054372,
+        "raw_offset": 12364,
+        "permissions": "---"
+      }
+    ],
+    "imports": [
+      {
+        "library": "",
+        "function": "__libc_start_main",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "_ITM_deregisterTMCloneTable",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "puts",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "fclose",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "__stack_chk_fail",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "mmap",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "strchr",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "printf",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "memset",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "srand",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "fgets",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "dlopen",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "__gmon_start__",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "time",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "munmap",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "mprotect",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "access",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "fopen",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "dlsym",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "_ITM_registerTMCloneTable",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "sleep",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "dlclose",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "strstr",
+        "ordinal": null
+      },
+      {
+        "library": "",
+        "function": "__cxa_finalize",
+        "ordinal": null
+      }
+    ]
+  },
+  "risk_score": 3.0,
+  "tool_scores": {
+    "metadata-extractor": 0.0,
+    "crypto-detector": 15.0,
+    "string-analyzer": 0.0,
+    "syscall-analyzer": 0.0,
+    "obfuscation-detector": 0.0
+  },
+  "severity_counts": {
+    "medium": 1
+  },
+  "mitre_attack_techniques": [
+    "T1573.001"
+  ],
+  "total_findings": 1,
+  "top_findings": [
+    {
+      "category": "crypto",
+      "description": "Cryptographic constant detected: AES S-Box",
+      "severity": "medium",
+      "confidence": 0.85,
+      "mitre_id": "T1573.001",
+      "location": "offset 0x2008",
+      "details": {
+        "algorithm": "AES S-Box",
+        "offset": 8200
+      }
+    }
+  ],
+  "recommendations": [
+    "No high-confidence malicious behavior detected; keep under watch and rescan after updates."
+  ],
+  "raw_tool_results": {
+    "metadata-extractor": {
+      "binary": {
+        "path": "/app/samples/mock",
+        "format": "ELF",
+        "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+        "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+        "size": 14488,
+        "arch": "EM_X86_64",
+        "bits": 64,
+        "compiler": "",
+        "entry_point": 4768,
+        "sections": [
+          {
+            "name": "",
+            "virtual_address": 0,
+            "virtual_size": 0,
+            "raw_size": 0,
+            "entropy": 0.0,
+            "raw_offset": 0,
+            "permissions": "---"
+          },
+          {
+            "name": ".interp",
+            "virtual_address": 792,
+            "virtual_size": 28,
+            "raw_size": 28,
+            "entropy": 3.9407598325400897,
+            "raw_offset": 792,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.property",
+            "virtual_address": 824,
+            "virtual_size": 48,
+            "raw_size": 48,
+            "entropy": 1.9345480540338138,
+            "raw_offset": 824,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.build-id",
+            "virtual_address": 872,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 4.247167197306934,
+            "raw_offset": 872,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.ABI-tag",
+            "virtual_address": 908,
+            "virtual_size": 32,
+            "raw_size": 32,
+            "entropy": 1.561278124459133,
+            "raw_offset": 908,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.hash",
+            "virtual_address": 944,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 1.7196074272293012,
+            "raw_offset": 944,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynsym",
+            "virtual_address": 984,
+            "virtual_size": 600,
+            "raw_size": 600,
+            "entropy": 0.6969871079267809,
+            "raw_offset": 984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynstr",
+            "virtual_address": 1584,
+            "virtual_size": 281,
+            "raw_size": 281,
+            "entropy": 4.670223282645408,
+            "raw_offset": 1584,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version",
+            "virtual_address": 1866,
+            "virtual_size": 50,
+            "raw_size": 50,
+            "entropy": 1.6645297862980875,
+            "raw_offset": 1866,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version_r",
+            "virtual_address": 1920,
+            "virtual_size": 64,
+            "raw_size": 64,
+            "entropy": 2.49395470625279,
+            "raw_offset": 1920,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.dyn",
+            "virtual_address": 1984,
+            "virtual_size": 192,
+            "raw_size": 192,
+            "entropy": 1.3930913210260554,
+            "raw_offset": 1984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.plt",
+            "virtual_address": 2176,
+            "virtual_size": 456,
+            "raw_size": 456,
+            "entropy": 1.324788444386374,
+            "raw_offset": 2176,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init",
+            "virtual_address": 4096,
+            "virtual_size": 27,
+            "raw_size": 27,
+            "entropy": 4.23636898364495,
+            "raw_offset": 4096,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt",
+            "virtual_address": 4128,
+            "virtual_size": 320,
+            "raw_size": 320,
+            "entropy": 4.004789395721671,
+            "raw_offset": 4128,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.got",
+            "virtual_address": 4448,
+            "virtual_size": 16,
+            "raw_size": 16,
+            "entropy": 3.375,
+            "raw_offset": 4448,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.sec",
+            "virtual_address": 4464,
+            "virtual_size": 304,
+            "raw_size": 304,
+            "entropy": 3.640495469590224,
+            "raw_offset": 4464,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".text",
+            "virtual_address": 4768,
+            "virtual_size": 1288,
+            "raw_size": 1288,
+            "entropy": 5.5594276477024325,
+            "raw_offset": 4768,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".fini",
+            "virtual_address": 6056,
+            "virtual_size": 13,
+            "raw_size": 13,
+            "entropy": 3.238901256602631,
+            "raw_offset": 6056,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".rodata",
+            "virtual_address": 8192,
+            "virtual_size": 157,
+            "raw_size": 157,
+            "entropy": 4.911254984998392,
+            "raw_offset": 8192,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame_hdr",
+            "virtual_address": 8352,
+            "virtual_size": 116,
+            "raw_size": 116,
+            "entropy": 3.568658579988178,
+            "raw_offset": 8352,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame",
+            "virtual_address": 8472,
+            "virtual_size": 428,
+            "raw_size": 428,
+            "entropy": 4.060049523734597,
+            "raw_offset": 8472,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init_array",
+            "virtual_address": 15656,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11560,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".fini_array",
+            "virtual_address": 15664,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11568,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".dynamic",
+            "virtual_address": 15672,
+            "virtual_size": 496,
+            "raw_size": 496,
+            "entropy": 1.4658343282045923,
+            "raw_offset": 11576,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".got",
+            "virtual_address": 16168,
+            "virtual_size": 216,
+            "raw_size": 216,
+            "entropy": 1.2892443249513206,
+            "raw_offset": 12072,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".xdata",
+            "virtual_address": 16384,
+            "virtual_size": 31,
+            "raw_size": 31,
+            "entropy": 2.8634626357696686,
+            "raw_offset": 12288,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".bss",
+            "virtual_address": 16415,
+            "virtual_size": 1,
+            "raw_size": 1,
+            "entropy": -0.0,
+            "raw_offset": 12319,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".comment",
+            "virtual_address": 0,
+            "virtual_size": 45,
+            "raw_size": 45,
+            "entropy": 3.9441033076242404,
+            "raw_offset": 12319,
+            "permissions": "---"
+          },
+          {
+            "name": ".shstrtab",
+            "virtual_address": 0,
+            "virtual_size": 267,
+            "raw_size": 267,
+            "entropy": 4.287138661054372,
+            "raw_offset": 12364,
+            "permissions": "---"
+          }
+        ],
+        "imports": [
+          {
+            "library": "",
+            "function": "__libc_start_main",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_deregisterTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "puts",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__stack_chk_fail",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strchr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "printf",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "memset",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "srand",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fgets",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__gmon_start__",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "time",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "munmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mprotect",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "access",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlsym",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_registerTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "sleep",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strstr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__cxa_finalize",
+            "ordinal": null
+          }
+        ]
+      },
+      "findings": [],
+      "risk_score": 0,
+      "tool_name": "metadata-extractor",
+      "summary": "Extracted metadata for ELF binary (EM_X86_64, 64-bit). 0 anomalies detected.",
+      "errors": []
+    },
+    "crypto-detector": {
+      "binary": {
+        "path": "/app/samples/mock",
+        "format": "ELF",
+        "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+        "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+        "size": 14488,
+        "arch": "EM_X86_64",
+        "bits": 64,
+        "compiler": "",
+        "entry_point": 4768,
+        "sections": [
+          {
+            "name": "",
+            "virtual_address": 0,
+            "virtual_size": 0,
+            "raw_size": 0,
+            "entropy": 0.0,
+            "raw_offset": 0,
+            "permissions": "---"
+          },
+          {
+            "name": ".interp",
+            "virtual_address": 792,
+            "virtual_size": 28,
+            "raw_size": 28,
+            "entropy": 3.9407598325400897,
+            "raw_offset": 792,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.property",
+            "virtual_address": 824,
+            "virtual_size": 48,
+            "raw_size": 48,
+            "entropy": 1.9345480540338138,
+            "raw_offset": 824,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.build-id",
+            "virtual_address": 872,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 4.247167197306934,
+            "raw_offset": 872,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.ABI-tag",
+            "virtual_address": 908,
+            "virtual_size": 32,
+            "raw_size": 32,
+            "entropy": 1.561278124459133,
+            "raw_offset": 908,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.hash",
+            "virtual_address": 944,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 1.7196074272293012,
+            "raw_offset": 944,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynsym",
+            "virtual_address": 984,
+            "virtual_size": 600,
+            "raw_size": 600,
+            "entropy": 0.6969871079267809,
+            "raw_offset": 984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynstr",
+            "virtual_address": 1584,
+            "virtual_size": 281,
+            "raw_size": 281,
+            "entropy": 4.670223282645408,
+            "raw_offset": 1584,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version",
+            "virtual_address": 1866,
+            "virtual_size": 50,
+            "raw_size": 50,
+            "entropy": 1.6645297862980875,
+            "raw_offset": 1866,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version_r",
+            "virtual_address": 1920,
+            "virtual_size": 64,
+            "raw_size": 64,
+            "entropy": 2.49395470625279,
+            "raw_offset": 1920,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.dyn",
+            "virtual_address": 1984,
+            "virtual_size": 192,
+            "raw_size": 192,
+            "entropy": 1.3930913210260554,
+            "raw_offset": 1984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.plt",
+            "virtual_address": 2176,
+            "virtual_size": 456,
+            "raw_size": 456,
+            "entropy": 1.324788444386374,
+            "raw_offset": 2176,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init",
+            "virtual_address": 4096,
+            "virtual_size": 27,
+            "raw_size": 27,
+            "entropy": 4.23636898364495,
+            "raw_offset": 4096,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt",
+            "virtual_address": 4128,
+            "virtual_size": 320,
+            "raw_size": 320,
+            "entropy": 4.004789395721671,
+            "raw_offset": 4128,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.got",
+            "virtual_address": 4448,
+            "virtual_size": 16,
+            "raw_size": 16,
+            "entropy": 3.375,
+            "raw_offset": 4448,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.sec",
+            "virtual_address": 4464,
+            "virtual_size": 304,
+            "raw_size": 304,
+            "entropy": 3.640495469590224,
+            "raw_offset": 4464,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".text",
+            "virtual_address": 4768,
+            "virtual_size": 1288,
+            "raw_size": 1288,
+            "entropy": 5.5594276477024325,
+            "raw_offset": 4768,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".fini",
+            "virtual_address": 6056,
+            "virtual_size": 13,
+            "raw_size": 13,
+            "entropy": 3.238901256602631,
+            "raw_offset": 6056,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".rodata",
+            "virtual_address": 8192,
+            "virtual_size": 157,
+            "raw_size": 157,
+            "entropy": 4.911254984998392,
+            "raw_offset": 8192,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame_hdr",
+            "virtual_address": 8352,
+            "virtual_size": 116,
+            "raw_size": 116,
+            "entropy": 3.568658579988178,
+            "raw_offset": 8352,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame",
+            "virtual_address": 8472,
+            "virtual_size": 428,
+            "raw_size": 428,
+            "entropy": 4.060049523734597,
+            "raw_offset": 8472,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init_array",
+            "virtual_address": 15656,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11560,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".fini_array",
+            "virtual_address": 15664,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11568,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".dynamic",
+            "virtual_address": 15672,
+            "virtual_size": 496,
+            "raw_size": 496,
+            "entropy": 1.4658343282045923,
+            "raw_offset": 11576,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".got",
+            "virtual_address": 16168,
+            "virtual_size": 216,
+            "raw_size": 216,
+            "entropy": 1.2892443249513206,
+            "raw_offset": 12072,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".xdata",
+            "virtual_address": 16384,
+            "virtual_size": 31,
+            "raw_size": 31,
+            "entropy": 2.8634626357696686,
+            "raw_offset": 12288,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".bss",
+            "virtual_address": 16415,
+            "virtual_size": 1,
+            "raw_size": 1,
+            "entropy": -0.0,
+            "raw_offset": 12319,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".comment",
+            "virtual_address": 0,
+            "virtual_size": 45,
+            "raw_size": 45,
+            "entropy": 3.9441033076242404,
+            "raw_offset": 12319,
+            "permissions": "---"
+          },
+          {
+            "name": ".shstrtab",
+            "virtual_address": 0,
+            "virtual_size": 267,
+            "raw_size": 267,
+            "entropy": 4.287138661054372,
+            "raw_offset": 12364,
+            "permissions": "---"
+          }
+        ],
+        "imports": [
+          {
+            "library": "",
+            "function": "__libc_start_main",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_deregisterTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "puts",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__stack_chk_fail",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strchr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "printf",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "memset",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "srand",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fgets",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__gmon_start__",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "time",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "munmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mprotect",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "access",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlsym",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_registerTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "sleep",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strstr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__cxa_finalize",
+            "ordinal": null
+          }
+        ]
+      },
+      "findings": [
+        {
+          "category": "crypto",
+          "description": "Cryptographic constant detected: AES S-Box",
+          "severity": "medium",
+          "confidence": 0.85,
+          "mitre_id": "T1573.001",
+          "location": "offset 0x2008",
+          "details": {
+            "algorithm": "AES S-Box",
+            "offset": 8200
+          }
+        }
+      ],
+      "risk_score": 15,
+      "tool_name": "crypto-detector",
+      "summary": "Crypto scan complete. 1 indicator found.",
+      "errors": []
+    },
+    "string-analyzer": {
+      "binary": {
+        "path": "/app/samples/mock",
+        "format": "ELF",
+        "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+        "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+        "size": 14488,
+        "arch": "EM_X86_64",
+        "bits": 64,
+        "compiler": "",
+        "entry_point": 4768,
+        "sections": [
+          {
+            "name": "",
+            "virtual_address": 0,
+            "virtual_size": 0,
+            "raw_size": 0,
+            "entropy": 0.0,
+            "raw_offset": 0,
+            "permissions": "---"
+          },
+          {
+            "name": ".interp",
+            "virtual_address": 792,
+            "virtual_size": 28,
+            "raw_size": 28,
+            "entropy": 3.9407598325400897,
+            "raw_offset": 792,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.property",
+            "virtual_address": 824,
+            "virtual_size": 48,
+            "raw_size": 48,
+            "entropy": 1.9345480540338138,
+            "raw_offset": 824,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.build-id",
+            "virtual_address": 872,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 4.247167197306934,
+            "raw_offset": 872,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.ABI-tag",
+            "virtual_address": 908,
+            "virtual_size": 32,
+            "raw_size": 32,
+            "entropy": 1.561278124459133,
+            "raw_offset": 908,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.hash",
+            "virtual_address": 944,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 1.7196074272293012,
+            "raw_offset": 944,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynsym",
+            "virtual_address": 984,
+            "virtual_size": 600,
+            "raw_size": 600,
+            "entropy": 0.6969871079267809,
+            "raw_offset": 984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynstr",
+            "virtual_address": 1584,
+            "virtual_size": 281,
+            "raw_size": 281,
+            "entropy": 4.670223282645408,
+            "raw_offset": 1584,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version",
+            "virtual_address": 1866,
+            "virtual_size": 50,
+            "raw_size": 50,
+            "entropy": 1.6645297862980875,
+            "raw_offset": 1866,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version_r",
+            "virtual_address": 1920,
+            "virtual_size": 64,
+            "raw_size": 64,
+            "entropy": 2.49395470625279,
+            "raw_offset": 1920,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.dyn",
+            "virtual_address": 1984,
+            "virtual_size": 192,
+            "raw_size": 192,
+            "entropy": 1.3930913210260554,
+            "raw_offset": 1984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.plt",
+            "virtual_address": 2176,
+            "virtual_size": 456,
+            "raw_size": 456,
+            "entropy": 1.324788444386374,
+            "raw_offset": 2176,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init",
+            "virtual_address": 4096,
+            "virtual_size": 27,
+            "raw_size": 27,
+            "entropy": 4.23636898364495,
+            "raw_offset": 4096,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt",
+            "virtual_address": 4128,
+            "virtual_size": 320,
+            "raw_size": 320,
+            "entropy": 4.004789395721671,
+            "raw_offset": 4128,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.got",
+            "virtual_address": 4448,
+            "virtual_size": 16,
+            "raw_size": 16,
+            "entropy": 3.375,
+            "raw_offset": 4448,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.sec",
+            "virtual_address": 4464,
+            "virtual_size": 304,
+            "raw_size": 304,
+            "entropy": 3.640495469590224,
+            "raw_offset": 4464,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".text",
+            "virtual_address": 4768,
+            "virtual_size": 1288,
+            "raw_size": 1288,
+            "entropy": 5.5594276477024325,
+            "raw_offset": 4768,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".fini",
+            "virtual_address": 6056,
+            "virtual_size": 13,
+            "raw_size": 13,
+            "entropy": 3.238901256602631,
+            "raw_offset": 6056,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".rodata",
+            "virtual_address": 8192,
+            "virtual_size": 157,
+            "raw_size": 157,
+            "entropy": 4.911254984998392,
+            "raw_offset": 8192,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame_hdr",
+            "virtual_address": 8352,
+            "virtual_size": 116,
+            "raw_size": 116,
+            "entropy": 3.568658579988178,
+            "raw_offset": 8352,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame",
+            "virtual_address": 8472,
+            "virtual_size": 428,
+            "raw_size": 428,
+            "entropy": 4.060049523734597,
+            "raw_offset": 8472,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init_array",
+            "virtual_address": 15656,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11560,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".fini_array",
+            "virtual_address": 15664,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11568,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".dynamic",
+            "virtual_address": 15672,
+            "virtual_size": 496,
+            "raw_size": 496,
+            "entropy": 1.4658343282045923,
+            "raw_offset": 11576,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".got",
+            "virtual_address": 16168,
+            "virtual_size": 216,
+            "raw_size": 216,
+            "entropy": 1.2892443249513206,
+            "raw_offset": 12072,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".xdata",
+            "virtual_address": 16384,
+            "virtual_size": 31,
+            "raw_size": 31,
+            "entropy": 2.8634626357696686,
+            "raw_offset": 12288,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".bss",
+            "virtual_address": 16415,
+            "virtual_size": 1,
+            "raw_size": 1,
+            "entropy": -0.0,
+            "raw_offset": 12319,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".comment",
+            "virtual_address": 0,
+            "virtual_size": 45,
+            "raw_size": 45,
+            "entropy": 3.9441033076242404,
+            "raw_offset": 12319,
+            "permissions": "---"
+          },
+          {
+            "name": ".shstrtab",
+            "virtual_address": 0,
+            "virtual_size": 267,
+            "raw_size": 267,
+            "entropy": 4.287138661054372,
+            "raw_offset": 12364,
+            "permissions": "---"
+          }
+        ],
+        "imports": [
+          {
+            "library": "",
+            "function": "__libc_start_main",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_deregisterTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "puts",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__stack_chk_fail",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strchr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "printf",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "memset",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "srand",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fgets",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__gmon_start__",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "time",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "munmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mprotect",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "access",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlsym",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_registerTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "sleep",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strstr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__cxa_finalize",
+            "ordinal": null
+          }
+        ]
+      },
+      "findings": [],
+      "risk_score": 0,
+      "tool_name": "string-analyzer",
+      "summary": "Extracted 53 strings; 0 suspicious indicators across 0 categories.",
+      "errors": []
+    },
+    "syscall-analyzer": {
+      "binary": {
+        "path": "/app/samples/mock",
+        "format": "ELF",
+        "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+        "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+        "size": 14488,
+        "arch": "EM_X86_64",
+        "bits": 64,
+        "compiler": "",
+        "entry_point": 4768,
+        "sections": [
+          {
+            "name": "",
+            "virtual_address": 0,
+            "virtual_size": 0,
+            "raw_size": 0,
+            "entropy": 0.0,
+            "raw_offset": 0,
+            "permissions": "---"
+          },
+          {
+            "name": ".interp",
+            "virtual_address": 792,
+            "virtual_size": 28,
+            "raw_size": 28,
+            "entropy": 3.9407598325400897,
+            "raw_offset": 792,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.property",
+            "virtual_address": 824,
+            "virtual_size": 48,
+            "raw_size": 48,
+            "entropy": 1.9345480540338138,
+            "raw_offset": 824,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.build-id",
+            "virtual_address": 872,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 4.247167197306934,
+            "raw_offset": 872,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.ABI-tag",
+            "virtual_address": 908,
+            "virtual_size": 32,
+            "raw_size": 32,
+            "entropy": 1.561278124459133,
+            "raw_offset": 908,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.hash",
+            "virtual_address": 944,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 1.7196074272293012,
+            "raw_offset": 944,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynsym",
+            "virtual_address": 984,
+            "virtual_size": 600,
+            "raw_size": 600,
+            "entropy": 0.6969871079267809,
+            "raw_offset": 984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynstr",
+            "virtual_address": 1584,
+            "virtual_size": 281,
+            "raw_size": 281,
+            "entropy": 4.670223282645408,
+            "raw_offset": 1584,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version",
+            "virtual_address": 1866,
+            "virtual_size": 50,
+            "raw_size": 50,
+            "entropy": 1.6645297862980875,
+            "raw_offset": 1866,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version_r",
+            "virtual_address": 1920,
+            "virtual_size": 64,
+            "raw_size": 64,
+            "entropy": 2.49395470625279,
+            "raw_offset": 1920,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.dyn",
+            "virtual_address": 1984,
+            "virtual_size": 192,
+            "raw_size": 192,
+            "entropy": 1.3930913210260554,
+            "raw_offset": 1984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.plt",
+            "virtual_address": 2176,
+            "virtual_size": 456,
+            "raw_size": 456,
+            "entropy": 1.324788444386374,
+            "raw_offset": 2176,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init",
+            "virtual_address": 4096,
+            "virtual_size": 27,
+            "raw_size": 27,
+            "entropy": 4.23636898364495,
+            "raw_offset": 4096,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt",
+            "virtual_address": 4128,
+            "virtual_size": 320,
+            "raw_size": 320,
+            "entropy": 4.004789395721671,
+            "raw_offset": 4128,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.got",
+            "virtual_address": 4448,
+            "virtual_size": 16,
+            "raw_size": 16,
+            "entropy": 3.375,
+            "raw_offset": 4448,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.sec",
+            "virtual_address": 4464,
+            "virtual_size": 304,
+            "raw_size": 304,
+            "entropy": 3.640495469590224,
+            "raw_offset": 4464,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".text",
+            "virtual_address": 4768,
+            "virtual_size": 1288,
+            "raw_size": 1288,
+            "entropy": 5.5594276477024325,
+            "raw_offset": 4768,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".fini",
+            "virtual_address": 6056,
+            "virtual_size": 13,
+            "raw_size": 13,
+            "entropy": 3.238901256602631,
+            "raw_offset": 6056,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".rodata",
+            "virtual_address": 8192,
+            "virtual_size": 157,
+            "raw_size": 157,
+            "entropy": 4.911254984998392,
+            "raw_offset": 8192,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame_hdr",
+            "virtual_address": 8352,
+            "virtual_size": 116,
+            "raw_size": 116,
+            "entropy": 3.568658579988178,
+            "raw_offset": 8352,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame",
+            "virtual_address": 8472,
+            "virtual_size": 428,
+            "raw_size": 428,
+            "entropy": 4.060049523734597,
+            "raw_offset": 8472,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init_array",
+            "virtual_address": 15656,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11560,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".fini_array",
+            "virtual_address": 15664,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11568,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".dynamic",
+            "virtual_address": 15672,
+            "virtual_size": 496,
+            "raw_size": 496,
+            "entropy": 1.4658343282045923,
+            "raw_offset": 11576,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".got",
+            "virtual_address": 16168,
+            "virtual_size": 216,
+            "raw_size": 216,
+            "entropy": 1.2892443249513206,
+            "raw_offset": 12072,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".xdata",
+            "virtual_address": 16384,
+            "virtual_size": 31,
+            "raw_size": 31,
+            "entropy": 2.8634626357696686,
+            "raw_offset": 12288,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".bss",
+            "virtual_address": 16415,
+            "virtual_size": 1,
+            "raw_size": 1,
+            "entropy": -0.0,
+            "raw_offset": 12319,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".comment",
+            "virtual_address": 0,
+            "virtual_size": 45,
+            "raw_size": 45,
+            "entropy": 3.9441033076242404,
+            "raw_offset": 12319,
+            "permissions": "---"
+          },
+          {
+            "name": ".shstrtab",
+            "virtual_address": 0,
+            "virtual_size": 267,
+            "raw_size": 267,
+            "entropy": 4.287138661054372,
+            "raw_offset": 12364,
+            "permissions": "---"
+          }
+        ],
+        "imports": [
+          {
+            "library": "",
+            "function": "__libc_start_main",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_deregisterTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "puts",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__stack_chk_fail",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strchr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "printf",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "memset",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "srand",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fgets",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__gmon_start__",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "time",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "munmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mprotect",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "access",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlsym",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_registerTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "sleep",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strstr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__cxa_finalize",
+            "ordinal": null
+          }
+        ]
+      },
+      "findings": [],
+      "risk_score": 0,
+      "tool_name": "syscall-analyzer",
+      "summary": "Analyzed 24 imports. Detected 0 suspicious behaviour group(s): .",
+      "errors": []
+    },
+    "obfuscation-detector": {
+      "binary": {
+        "path": "/app/samples/mock",
+        "format": "ELF",
+        "md5": "284212cf6b749b21e7a3bd9cfbc8000b",
+        "sha256": "a235a234b1eb3b721540165a8fa9f9989ddbee3fdac8f33d3a31e9454fe861f9",
+        "size": 14488,
+        "arch": "EM_X86_64",
+        "bits": 64,
+        "compiler": "",
+        "entry_point": 4768,
+        "sections": [
+          {
+            "name": "",
+            "virtual_address": 0,
+            "virtual_size": 0,
+            "raw_size": 0,
+            "entropy": 0.0,
+            "raw_offset": 0,
+            "permissions": "---"
+          },
+          {
+            "name": ".interp",
+            "virtual_address": 792,
+            "virtual_size": 28,
+            "raw_size": 28,
+            "entropy": 3.9407598325400897,
+            "raw_offset": 792,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.property",
+            "virtual_address": 824,
+            "virtual_size": 48,
+            "raw_size": 48,
+            "entropy": 1.9345480540338138,
+            "raw_offset": 824,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.gnu.build-id",
+            "virtual_address": 872,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 4.247167197306934,
+            "raw_offset": 872,
+            "permissions": "r--"
+          },
+          {
+            "name": ".note.ABI-tag",
+            "virtual_address": 908,
+            "virtual_size": 32,
+            "raw_size": 32,
+            "entropy": 1.561278124459133,
+            "raw_offset": 908,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.hash",
+            "virtual_address": 944,
+            "virtual_size": 36,
+            "raw_size": 36,
+            "entropy": 1.7196074272293012,
+            "raw_offset": 944,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynsym",
+            "virtual_address": 984,
+            "virtual_size": 600,
+            "raw_size": 600,
+            "entropy": 0.6969871079267809,
+            "raw_offset": 984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".dynstr",
+            "virtual_address": 1584,
+            "virtual_size": 281,
+            "raw_size": 281,
+            "entropy": 4.670223282645408,
+            "raw_offset": 1584,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version",
+            "virtual_address": 1866,
+            "virtual_size": 50,
+            "raw_size": 50,
+            "entropy": 1.6645297862980875,
+            "raw_offset": 1866,
+            "permissions": "r--"
+          },
+          {
+            "name": ".gnu.version_r",
+            "virtual_address": 1920,
+            "virtual_size": 64,
+            "raw_size": 64,
+            "entropy": 2.49395470625279,
+            "raw_offset": 1920,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.dyn",
+            "virtual_address": 1984,
+            "virtual_size": 192,
+            "raw_size": 192,
+            "entropy": 1.3930913210260554,
+            "raw_offset": 1984,
+            "permissions": "r--"
+          },
+          {
+            "name": ".rela.plt",
+            "virtual_address": 2176,
+            "virtual_size": 456,
+            "raw_size": 456,
+            "entropy": 1.324788444386374,
+            "raw_offset": 2176,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init",
+            "virtual_address": 4096,
+            "virtual_size": 27,
+            "raw_size": 27,
+            "entropy": 4.23636898364495,
+            "raw_offset": 4096,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt",
+            "virtual_address": 4128,
+            "virtual_size": 320,
+            "raw_size": 320,
+            "entropy": 4.004789395721671,
+            "raw_offset": 4128,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.got",
+            "virtual_address": 4448,
+            "virtual_size": 16,
+            "raw_size": 16,
+            "entropy": 3.375,
+            "raw_offset": 4448,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".plt.sec",
+            "virtual_address": 4464,
+            "virtual_size": 304,
+            "raw_size": 304,
+            "entropy": 3.640495469590224,
+            "raw_offset": 4464,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".text",
+            "virtual_address": 4768,
+            "virtual_size": 1288,
+            "raw_size": 1288,
+            "entropy": 5.5594276477024325,
+            "raw_offset": 4768,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".fini",
+            "virtual_address": 6056,
+            "virtual_size": 13,
+            "raw_size": 13,
+            "entropy": 3.238901256602631,
+            "raw_offset": 6056,
+            "permissions": "r-x"
+          },
+          {
+            "name": ".rodata",
+            "virtual_address": 8192,
+            "virtual_size": 157,
+            "raw_size": 157,
+            "entropy": 4.911254984998392,
+            "raw_offset": 8192,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame_hdr",
+            "virtual_address": 8352,
+            "virtual_size": 116,
+            "raw_size": 116,
+            "entropy": 3.568658579988178,
+            "raw_offset": 8352,
+            "permissions": "r--"
+          },
+          {
+            "name": ".eh_frame",
+            "virtual_address": 8472,
+            "virtual_size": 428,
+            "raw_size": 428,
+            "entropy": 4.060049523734597,
+            "raw_offset": 8472,
+            "permissions": "r--"
+          },
+          {
+            "name": ".init_array",
+            "virtual_address": 15656,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11560,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".fini_array",
+            "virtual_address": 15664,
+            "virtual_size": 8,
+            "raw_size": 8,
+            "entropy": 1.061278124459133,
+            "raw_offset": 11568,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".dynamic",
+            "virtual_address": 15672,
+            "virtual_size": 496,
+            "raw_size": 496,
+            "entropy": 1.4658343282045923,
+            "raw_offset": 11576,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".got",
+            "virtual_address": 16168,
+            "virtual_size": 216,
+            "raw_size": 216,
+            "entropy": 1.2892443249513206,
+            "raw_offset": 12072,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".xdata",
+            "virtual_address": 16384,
+            "virtual_size": 31,
+            "raw_size": 31,
+            "entropy": 2.8634626357696686,
+            "raw_offset": 12288,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".bss",
+            "virtual_address": 16415,
+            "virtual_size": 1,
+            "raw_size": 1,
+            "entropy": -0.0,
+            "raw_offset": 12319,
+            "permissions": "rw-"
+          },
+          {
+            "name": ".comment",
+            "virtual_address": 0,
+            "virtual_size": 45,
+            "raw_size": 45,
+            "entropy": 3.9441033076242404,
+            "raw_offset": 12319,
+            "permissions": "---"
+          },
+          {
+            "name": ".shstrtab",
+            "virtual_address": 0,
+            "virtual_size": 267,
+            "raw_size": 267,
+            "entropy": 4.287138661054372,
+            "raw_offset": 12364,
+            "permissions": "---"
+          }
+        ],
+        "imports": [
+          {
+            "library": "",
+            "function": "__libc_start_main",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_deregisterTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "puts",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__stack_chk_fail",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strchr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "printf",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "memset",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "srand",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fgets",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__gmon_start__",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "time",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "munmap",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "mprotect",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "access",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "fopen",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlsym",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "_ITM_registerTMCloneTable",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "sleep",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "dlclose",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "strstr",
+            "ordinal": null
+          },
+          {
+            "library": "",
+            "function": "__cxa_finalize",
+            "ordinal": null
+          }
+        ]
+      },
+      "findings": [],
+      "risk_score": 0,
+      "tool_name": "obfuscation-detector",
+      "summary": "Obfuscation scan complete. 0 indicator(s) found.",
+      "errors": [],
+      "unpack_attempted": false,
+      "unpacked_file_path": ""
+    }
+  },
+  "auto_unpack_enabled": false,
+  "unpack_attempted": false,
+  "unpacked_file_path": ""
+}

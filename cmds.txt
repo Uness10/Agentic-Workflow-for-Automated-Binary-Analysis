@@ -1,1 +1,4 @@
+docker compose run --rm analysis
+./start.sh samples/fake_malware --mode deterministic
+
 pip install agno[google] && export GOOGLE_API_KEY= 
